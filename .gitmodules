@@ -1,0 +1,3 @@
+[submodule "components/otx-node-sdk"]
+	path = components/otx-node-sdk
+	url = https://github.com/nbiles/OTX-Node-SDK.git

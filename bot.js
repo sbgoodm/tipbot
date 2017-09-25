@@ -70,7 +70,8 @@ var bot_options = {
     // debug: true,
     scopes: ['bot'],
     studio_token: process.env.studio_token,
-    studio_command_uri: process.env.studio_command_uri
+    studio_command_uri: process.env.studio_command_uri,
+    otx_token: process.env.otx_token
 };
 
 // Use a mongo database if specified, otherwise store in a JSON file local to the app.
