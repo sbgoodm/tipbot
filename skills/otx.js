@@ -3,12 +3,12 @@ var otxSdk = require('../components/otx-node-sdk/index.js');
 
 module.exports = function(controller) {
     otx = new otxSdk(controller.config.otx_token);
-    var search_pulses_cmd = "search-pulses";
+    var otx_cmd = "otx";
 
-    controller.hears([search_pulses_cmd], 'direct_message,direct_mention', function(bot, message){
-        var q = message.text.replace(search_pulses_cmd, "");
-        otx.search.pulses(q, "1", "1", function(error, response){
-            bot.reply(message, response.results[0].description + "\n" + response.results[0].references.join(","));
+    controller.hears([otx_cmd], 'direct_message,direct_mention', function(bot, message){
+        var args = message.text.replace(otx_cmd, "").trim().split(" ");
+        otx.indicators[args[0]](args[2], args[1], function(error, response){
+            bot.reply(message, JSON.stringify(response, null, 2));
         });
     });
 }
