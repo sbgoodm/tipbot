@@ -26,18 +26,7 @@ describe('When talking to TIPBot', function() {
 
     it('should search pulses when command is pulses', function(done){
         this.bot.usersInput(
-            [
-                {
-                    user: 'someUserId',
-                    channel: 'someChannel',
-                    messages: [
-                        {
-                            text: 'pulses Zahrani',
-                            isAssertion: true
-                        }
-                    ]
-                }
-            ]
+            testMessage('pulses Zahrani')
         ).then(function(message){
             assert.isNotNull(message.text, "Bot didn't respond to pulses command");
             done();
@@ -46,18 +35,7 @@ describe('When talking to TIPBot', function() {
 
     it('should handle pulse searches with multiple terms', function(done){
         this.bot.usersInput(
-            [
-                {
-                    user: 'someUserId',
-                    channel: 'someChannel',
-                    messages: [
-                        {
-                            text: 'pulses Zahrani tofsee',
-                            isAssertion: true
-                        }
-                    ]
-                }
-            ]
+            testMessage('pulses Zahrani tofsee')
         ).then(function(message){
             assert.isNotNull(message.text, "Bot didn't respond to multi-term pulses command");
             done();
@@ -66,21 +44,25 @@ describe('When talking to TIPBot', function() {
 
     it('should search indicators when command is an OTX indicator type', function(done){
         this.bot.usersInput(
-            [
-                {
-                    user: 'someUserId',
-                    channel: 'someChannel',
-                    messages: [
-                        {
-                            text: 'indicator ipv4 general 103.205.14.176',
-                            isAssertion: true
-                        }
-                    ]
-                }
-            ]
+            testMessage('indicator ipv4 general 103.205.14.176')           
         ).then(function(message){
             assert.isNotNull(message.text, "Bot didn't respond to indicator ipv4 command");
             done();
         })
     });
+
+    var testMessage = function(text){
+        return [
+                {
+                    user: 'someUserId',
+                    channel: 'someChannel',
+                    messages: [
+                        {
+                            text: text,
+                            isAssertion: true
+                        }
+                    ]
+                }
+            ];
+    }
 });
