@@ -27,3 +27,10 @@ If you do want to run this Slackbot yourself, you'll need a public hosting solut
     * If you use Heroku as your hosting provider, this can also be done with the [Heroku CLI via `heroku config:set`](https://devcenter.heroku.com/articles/getting-started-with-nodejs#define-config-vars).
 1. `node .`
 1. Browse to `http://your-url:your_port/login`
+
+## To Do
+- [ ] Stub out OTX library, so tests don't hit the network, and assertions can be more robust/deterministic
+- [ ] Add Travis
+- [ ] Add 'help' command
+- [ ] Format pulse responses
+- [ ] Format IOC responses
