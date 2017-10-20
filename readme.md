@@ -1,5 +1,6 @@
-# Threat Intel Slackbot Prototype
-This Slackbot listens to your questions about threat intelligence, and does its best to answer.
+# Threat Intel Slackbot Prototype [![Build Status](https://travis-ci.org/sbgoodm/tipbot.svg?branch=master)](https://travis-ci.org/sbgoodm/tipbot)
+This Slackbot talks to AlienVault OTX and will return recently published security alerts and indicators of compromise.
+
 
 ## Usage
 1. [Visit this link](https://atipbot.herokuapp.com/) to sign into Slack and authorize the _Threat Intel Platform_ slackbot in your channels.
@@ -30,7 +31,7 @@ If you do want to run this Slackbot yourself, you'll need a public hosting solut
 
 ## To Do
 - [ ] Stub out OTX library, so tests don't hit the network, and assertions can be more robust/deterministic
-- [ ] Add Travis
+- [X] Add Travis
 - [ ] Add 'help' command
 - [ ] Format pulse responses
 - [ ] Format IOC responses
