@@ -24,7 +24,7 @@ describe('When talking to TIPBot', function() {
         this.controller.shutdown();
     });
 
-    it('should search should search pulses when command is pulses', function(done){
+    it('should search pulses when command is pulses', function(done){
         this.bot.usersInput(
             [
                 {
@@ -32,14 +32,34 @@ describe('When talking to TIPBot', function() {
                     channel: 'someChannel',
                     messages: [
                         {
-                            text: 'otx pulses Zahrani',
+                            text: 'pulses Zahrani',
                             isAssertion: true
                         }
                     ]
                 }
             ]
         ).then(function(message){
-            assert.isNotNull(message.text, "Bot didn't respond to otx pulses command");
+            assert.isNotNull(message.text, "Bot didn't respond to pulses command");
+            done();
+        })
+    });
+
+    it('should handle pulse searches with multiple terms', function(done){
+        this.bot.usersInput(
+            [
+                {
+                    user: 'someUserId',
+                    channel: 'someChannel',
+                    messages: [
+                        {
+                            text: 'pulses Zahrani tofsee',
+                            isAssertion: true
+                        }
+                    ]
+                }
+            ]
+        ).then(function(message){
+            assert.isNotNull(message.text, "Bot didn't respond to multi-term pulses command");
             done();
         })
     });
@@ -52,14 +72,14 @@ describe('When talking to TIPBot', function() {
                     channel: 'someChannel',
                     messages: [
                         {
-                            text: 'otx ipv4 general 103.205.14.176',
+                            text: 'indicator ipv4 general 103.205.14.176',
                             isAssertion: true
                         }
                     ]
                 }
             ]
         ).then(function(message){
-            assert.isNotNull(message.text, "Bot didn't respond to otx ipv4 command");
+            assert.isNotNull(message.text, "Bot didn't respond to indicator ipv4 command");
             done();
         })
     });
