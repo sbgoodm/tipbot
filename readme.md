@@ -30,8 +30,10 @@ If you do want to run this Slackbot yourself, you'll need a public hosting solut
 1. Browse to `http://your-url:your_port/login`
 
 ## To Do
-- [ ] Stub out OTX library, so tests don't hit the network, and assertions can be more robust/deterministic
+- [X] Stub out OTX library, so tests don't hit the network, and assertions can be more robust/deterministic
 - [X] Add Travis
-- [ ] Add 'help' command
-- [ ] Format pulse responses
-- [ ] Format IOC responses
+- [X] Add 'help' command
+- [X] Format pulse responses
+- [X] Format IOC responses
+- [ ] Add command to get latest pulses posted to OTX (no search term needed)
+- [ ] Output a response to slack if nothing is returned by OTX

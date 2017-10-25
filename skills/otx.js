@@ -35,7 +35,6 @@ module.exports = function(controller, otxClient) {
 
     controller.hears([help_cmd], 'direct_message, direct_mention', function(bot, message){
         var help = "TIPBot Help: \n" +
-        "today | returns five most recent pulses from the last 24 hours \n" + 
         "pulses <search_term> | returns any matching pulses from AlienVault OTX \n" +
         "indicator cve <cve_number> | returns any pulses that reference the specified CVE \n" +
         "indicator domain <domain_name> | returns any pulses that reference the specified domain \n" +
