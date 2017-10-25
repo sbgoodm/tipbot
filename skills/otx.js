@@ -2,7 +2,9 @@
 var otxSdk = require('../components/otx-node-sdk/index.js');
 var _ = require('lodash');
 
-module.exports = function(controller, otxClient=new otxSdk(process.env.otx_token)) { //TODO: validate this works in heroku
+module.exports = function(controller, otxClient) {
+    otxClient = typeof otxClient !== 'undefined' ? otxClient : new otxSdk(process.env.otx_token);
+
     var indicator_cmd = "indicator";
     var pulses_cmd = "pulses";
     var help_cmd = "help";
