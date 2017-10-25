@@ -20,15 +20,15 @@ describe('When talking to TIPBot', function() {
 
         // Stub the OTX SDK client search.pulses method to return a canned JSON response
         this.pulsesStub = sinon.stub(this.otxSdkStub.search, "pulses");
-        this.pulsesStub.callsArgWith(3, null, pulseSearchResponse);
+        this.pulsesStub.callsArgWith(3, null, JSON.parse(pulseSearchResponse));
 
         // Stub the OTX SDK client indicators ipv4 method to return a canned JSON response
         this.ipv4Stub = sinon.stub(this.otxSdkStub.indicators, "ipv4");
-        this.ipv4Stub.callsArgWith(2, null, indicatorIPv4SearchResponse);
+        this.ipv4Stub.callsArgWith(2, null, JSON.parse(indicatorIPv4SearchResponse));
 
         // Stub the OTX SDK client indicators ipv4 method to return a canned JSON response
         this.fileStub = sinon.stub(this.otxSdkStub.indicators, "file");
-        this.fileStub.callsArgWith(2, null, indicatorFileSearchResponse);
+        this.fileStub.callsArgWith(2, null, JSON.parse(indicatorFileSearchResponse));
     });
 
     // Wire up mocked Slack back-end, so that our Slackbot OTXSkill can respond to input

@@ -14,7 +14,7 @@ module.exports = function(controller, otxClient) {
 
         // Potentially a security vulnerability, dynamically calling a function from user input with no guard validations
         otxClient.indicators[args[0]](args[1], "general", function(error, response){
-            var pulses = _.map(JSON.parse(response).pulse_info.pulses, function(pulse){
+            var pulses = _.map(response.pulse_info.pulses, function(pulse){
                 return pulse.name + "\nhttps://otx.alienvault.com/pulse/"+ pulse.id + "\n" + pulse.tags.join(", ");
             });
 
@@ -25,7 +25,7 @@ module.exports = function(controller, otxClient) {
     controller.hears([pulses_cmd], 'direct_message, direct_mention', function(bot, message){
         var q = message.text.replace(pulses_cmd, "").trim();
         otxClient.search.pulses(encodeURIComponent(q), "1", null, function(error, response){
-            var pulses = _.map(JSON.parse(response).results, function(result){
+            var pulses = _.map(response.results, function(result){
                 return result.name + "\n" + result.references.join("\n") + result.tags.join(", ");
             });
 
